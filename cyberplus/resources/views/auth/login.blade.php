@@ -6,7 +6,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Metronic Admin Theme #2 | User Login 4</title>
+        <title>Cyberplus |  Login </title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #2 for " name="description" />
@@ -44,12 +44,16 @@
         <!-- BEGIN LOGIN -->
         <div class="content">
             <!-- BEGIN LOGIN FORM -->
-            <form class="login-form" action="index.html" method="post">
+            <form class="login-form" action="{{ route('login') }}" method="post">
+            {{ csrf_field() }}
                 <h3 class="form-title">Sign in</h3>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>
-                    <span> Enter email addressand password. </span>
+                    <span> Enter email address and password. </span>
                 </div>
+                @if(Session::has('status'))
+                    <div class="alert alert-success"><em> {!! session('status') !!}</em></div>
+                @endif
                 <div class="form-group">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label class="control-label visible-ie8 visible-ie9">Email</label>
