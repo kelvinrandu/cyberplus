@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('user_name')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(false); //if user has verified email or not
+            $table->boolean('paid')->default(false); // if user has paid subscription or not
             $table->string('password');
             $table->integer('role_id');
             $table->rememberToken();
