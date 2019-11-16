@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Cyberplus;
 
 use Illuminate\Database\Eloquent\Model;
 
