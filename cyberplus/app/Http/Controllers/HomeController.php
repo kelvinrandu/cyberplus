@@ -4,6 +4,7 @@ namespace Cyberplus\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use  Auth;
 use Session;
 use App\User;
@@ -38,7 +39,22 @@ class HomeController extends Controller
             return 'not paid';
         }
 
-        return view('home');
+        // check the role of the signed in user and direct to their respective dashboard
+        switch($user->role_id){
+            case 1:
+                return redirect()->action('AdminController@index');
+                break;
+
+            case 2:
+                return redirect()->action('StoreOwnerController@index');
+                break;           
+            default:
+                return redirect()->action('StoreAttendantController@index');
+
+        }
+
+        // return view('home');
+        // return $user->role_id ;
         
 
         // Session::put('user', $user);
