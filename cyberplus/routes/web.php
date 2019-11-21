@@ -21,3 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('resource', 'StoreAttendantController');
 Route::resource('resource', 'StoreOwnerController');
 Route::resource('resource', 'AdminController');
+Route::get('/admin/add/', [
+    'uses' => 'AdminController@getAddUserPage',
+    'as' => 'admin.get.add.user.page'
+    ]);

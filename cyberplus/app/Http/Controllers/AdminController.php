@@ -3,6 +3,10 @@
 namespace Cyberplus\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class AdminController extends Controller
 {
@@ -11,9 +15,23 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // check if user accessing this function is logged in
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+ 
+    // directs admin to dashboard
     public function index()
     {
-        return view('admin.dashboard1');
+        return view('admin.dashboard');
+    }
+
+    // directs admin to add store owner page
+    public function getAddUserPage()
+    {
+        return view('admin.add-owner');
     }
 
     /**
@@ -21,9 +39,16 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        User::create(array(
+            'user_name'=>Input::get('user_name'),
+            'email'=>Input::get('email'),
+            'password'=> bcrypt('pass_word'),
+            'role_id'=>2
+
+          ));
+          return redirect()->back()->with('message','added store owner successfully');
     }
 
     /**
