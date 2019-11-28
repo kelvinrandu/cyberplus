@@ -3,7 +3,9 @@
 namespace Cyberplus\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -39,16 +41,21 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function createOwner(Request $request)
     {
-        User::create(array(
-            'user_name'=>Input::get('user_name'),
-            'email'=>Input::get('email'),
-            'password'=> bcrypt('pass_word'),
-            'role_id'=>2
+        $user_name = $request->get('user_name');
+        $email = $request->get('email');
+        $role_id = 2 ;
 
-          ));
-          return redirect()->back()->with('message','added store owner successfully');
+        DB::table('users')->insert([
+            'user_name' => $user_name,
+            'email' =>  $email ,
+            'password' => bcrypt('password'),
+            'role_id' =>  $role_id,
+        ]);
+       
+        //   return redirect()->back()->with('message','added store owner successfully');
+          return $user_name;
     }
 
     /**

@@ -25,3 +25,8 @@ Route::get('/admin/add/', [
     'uses' => 'AdminController@getAddUserPage',
     'as' => 'admin.get.add.user.page'
     ]);
+//post add storeowner
+Route::post('/admin/add/owner/', [
+    'uses' => 'AdminController@createOwner',
+    'as' => 'admin.add.owner'
+    ]);

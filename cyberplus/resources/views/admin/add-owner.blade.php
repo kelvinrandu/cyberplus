@@ -161,24 +161,27 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                    <form role="form">
+                                <form  action="{{ route('admin.add.owner') }}" method="post">
+                                {{ csrf_field() }}
+                                    
                                         <div class="form-group">
                                                 <label for="exampleInputPassword1">User Name</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-user font-red"></i>
                                                     </span>
-                                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Username">
+                                                    <input type="text" class="form-control" id="exampleInputPassword1" name="user_name" placeholder="Username">
                                                 </div>
                                             </div>
                                         <div class="form-body">
-                                            <div class="form-group">
+                           
+
                                                 <label>Email Address</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-envelope"></i>
                                                     </span>
-                                                    <input type="text" class="form-control" placeholder="Email Address"> </div>
+                                                    <input type="text" class="form-control" name="email" placeholder="Email Address"> </div>
                                             </div>
 
                                         </div>
