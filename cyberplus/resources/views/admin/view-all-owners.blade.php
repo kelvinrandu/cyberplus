@@ -83,7 +83,7 @@
                     </div>
                     <!-- END THEME PANEL -->
                     <h1 class="page-title"> View store owners
-                        <small>basic bootstrap tables with various options and styles</small>
+                 
                     </h1>
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
@@ -126,7 +126,7 @@
                     <!-- END PAGE HEADER-->
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <!-- BEGIN SAMPLE TABLE PORTLET-->
                             <div class="portlet box green">
                                 <div class="portlet-title">
@@ -139,61 +139,74 @@
                                         <a href="javascript:;" class="remove"> </a>
                                     </div>
                                 </div>
+   
+
                                 <div class="portlet-body">
                                     <div class="table-scrollable">
                                         <table class="table table-striped table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th> # </th>
-                                                    <th> First Name </th>
-                                                    <th> Last Name </th>
-                                                    <th> Username </th>
+                                                    <th> #  </th>
+                                                    <th> User name </th>
+                                                    <th> email </th>
+                                                    <th> Subscription </th>
                                                     <th> Status </th>
+                                                    <th> View shops </th>
                                                     <th> action </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @if(count($owners)==0)
+                                            <tr>
+                                            <td><div class="note note-success"><h4>No store owners</h4>  </div></td>
+                              
+                              </tr>
+                                 @else
+                                            @foreach ($owners as $owner)                                                       
                                                 <tr>
-                                                    <td> 1 </td>
-                                                    <td> Mark </td>
-                                                    <td> Otto </td>
-                                                    <td> makr124 </td>
-                                                    <td>
-                                                        <span class="label label-sm label-success"> Approved </span>
+                                                    <td>{{$owner->id}}</td>
+                                                    <td> {{$owner->user_name}}</td>
+                                                    <td> {{$owner->email}} </td>
+
+                                                    @if($owner->paid==1)
+                                                    <td> 
+                                                        <span class="label label-sm label-success"> Paid </span> 
                                                     </td>
-                                                    <td>
-                                                        <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
-                                                            <i class="fa fa-share"></i> Share </a>
+                                                    @else
+                                                    <td> 
+                                                        <span class="label label-sm label-success"> Not paid </span> 
                                                     </td>
+                                                    @endif
+                                                    @if($owner->status==1)
+                                                    <td> 
+                                                        <span class="label label-sm label-success"> Active </span> 
+                                                    </td>
+                                                    @else
+                                                    <td> 
+                                                        <span class="label label-sm label-success"> Not Active </span> 
+                                                    </td>
+                                                    @endif
+                                                    <td>
+                                                    <a href="javascript:;" class="btn dark btn-sm btn-outline sbold uppercase">
+                                                             View </a>
+                                                    </td>
+                                                    @if($owner->status==1)
+                                                    <td> 
+                                                    <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
+                                                            deactivate </a>
+                                                    </td>
+                                                    @else
+                                                    <td> 
+                                                    <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
+                                                            activate </a>
+                                                    </td>
+                                                    </td>
+                                                    @endif
                                                     
                                                 </tr>
-                                                <tr>
-                                                    <td> 2 </td>
-                                                    <td> Jacob </td>
-                                                    <td> Nilson </td>
-                                                    <td> jac123 </td>
-                                                    <td>
-                                                        <span class="label label-sm label-info"> Pending </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> 3 </td>
-                                                    <td> Larry </td>
-                                                    <td> Cooper </td>
-                                                    <td> lar </td>
-                                                    <td>
-                                                        <span class="label label-sm label-warning"> Suspended </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> 4 </td>
-                                                    <td> Sandy </td>
-                                                    <td> Lim </td>
-                                                    <td> sanlim </td>
-                                                    <td>
-                                                        <span class="label label-sm label-danger"> Blocked </span>
-                                                    </td>
-                                                </tr>
+                                                @endforeach
+                                                @endif
+
                                             </tbody>
                                         </table>
                                     </div>

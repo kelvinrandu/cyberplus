@@ -87,8 +87,9 @@ class AdminController extends Controller
     public function showOwners()
     {
         // get all store owners
-        $user = DB::table('users')->where('role_id', '2');
-        return view('admin.view-all-owners');
+        $owners = DB::table('users')->where('role_id', '2')->get();
+        return view('admin.view-all-owners',array('owners' => $owners ));
+      
     }
 
     /**
