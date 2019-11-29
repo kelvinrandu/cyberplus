@@ -30,3 +30,7 @@ Route::post('/admin/add/owner/', [
     'uses' => 'AdminController@createOwner',
     'as' => 'admin.add.owner'
     ]);
+Route::get('/admin/get/owners/', [
+    'uses' => 'AdminController@showOwners',
+    'as' => 'admin.get.owners'
+    ]);

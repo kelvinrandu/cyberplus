@@ -2,7 +2,6 @@
 
 @section('content')
 
-                <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
                     <!-- BEGIN PAGE HEADER-->
                     <!-- BEGIN THEME PANEL -->
@@ -83,8 +82,8 @@
                         </div>
                     </div>
                     <!-- END THEME PANEL -->
-                    <h1 class="page-title"> Add Store Owner
-                    
+                    <h1 class="page-title"> View store owners
+                        <small>basic bootstrap tables with various options and styles</small>
                     </h1>
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
@@ -94,7 +93,7 @@
                                 <i class="fa fa-angle-right"></i>
                             </li>
                             <li>
-                                <span>Add owner</span>
+                                <span>Store owners</span>
                             </li>
                         </ul>
                         <div class="page-toolbar">
@@ -125,89 +124,84 @@
                         </div>
                     </div>
                     <!-- END PAGE HEADER-->
+
                     <div class="row">
-                        <div class="col-md-6 ">
-                            <!-- BEGIN SAMPLE FORM PORTLET-->
-                            @if(Session::has('message'))
-                    <div class="alert alert-success"><em> {!! session('message') !!}</em></div>
-                @endif
-                @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif                          
-                <div class="portlet light ">
+                        <div class="col-md-6">
+                            <!-- BEGIN SAMPLE TABLE PORTLET-->
+                            <div class="portlet box green">
                                 <div class="portlet-title">
-                                    <div class="caption font-red-sunglo">
-                                        <i class="icon-settings font-red-sunglo"></i>
-                                        <span class="caption-subject font-dark sbold uppercase">Add Store Owner</span>
-                                    </div>
-                                    <div class="actions">
-                                        <div class="btn-group">
-                                            <a class="btn btn-sm green dropdown-toggle" href="javascript:;" data-toggle="dropdown"> Actions
-                                                <i class="fa fa-angle-down"></i>
-                                            </a>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <i class="fa fa-trash-o"></i> Delete </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <i class="fa fa-ban"></i> Ban </a>
-                                                </li>
-                                                <li class="divider"> </li>
-                                                <li>
-                                                    <a href="javascript:;"> Make admin </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="caption">
+                                        <i class="fa fa-comments"></i>Store owners</div>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="collapse"> </a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                        <a href="javascript:;" class="reload"> </a>
+                                        <a href="javascript:;" class="remove"> </a>
                                     </div>
                                 </div>
-                                <div class="portlet-body form">
-                                <form  action="{{ route('admin.add.owner') }}" method="post">
-                                {{ csrf_field() }}
-                                    
-                                        <div class="form-group">
-                                                <label for="exampleInputPassword1">User Name</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-user font-red"></i>
-                                                    </span>
-                                                    <input type="text" class="form-control" id="exampleInputPassword1" name="user_name" placeholder="Username">
-                                                </div>
-                                            </div>
-                                        <div class="form-body">
-                           
-
-                                                <label>Email Address</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-envelope"></i>
-                                                    </span>
-                                                    <input type="text" class="form-control" name="email" placeholder="Email Address"> </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="form-actions">
-                                            <button type="submit" class="btn blue">Submit</button>
-                                            <button type="button" class="btn default">Cancel</button>
-                                        </div>
-                                    </form>
+                                <div class="portlet-body">
+                                    <div class="table-scrollable">
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th> # </th>
+                                                    <th> First Name </th>
+                                                    <th> Last Name </th>
+                                                    <th> Username </th>
+                                                    <th> Status </th>
+                                                    <th> action </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td> 1 </td>
+                                                    <td> Mark </td>
+                                                    <td> Otto </td>
+                                                    <td> makr124 </td>
+                                                    <td>
+                                                        <span class="label label-sm label-success"> Approved </span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
+                                                            <i class="fa fa-share"></i> Share </a>
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td> 2 </td>
+                                                    <td> Jacob </td>
+                                                    <td> Nilson </td>
+                                                    <td> jac123 </td>
+                                                    <td>
+                                                        <span class="label label-sm label-info"> Pending </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> 3 </td>
+                                                    <td> Larry </td>
+                                                    <td> Cooper </td>
+                                                    <td> lar </td>
+                                                    <td>
+                                                        <span class="label label-sm label-warning"> Suspended </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> 4 </td>
+                                                    <td> Sandy </td>
+                                                    <td> Lim </td>
+                                                    <td> sanlim </td>
+                                                    <td>
+                                                        <span class="label label-sm label-danger"> Blocked </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-
-                            <!-- END SAMPLE FORM PORTLET-->
+                            <!-- END SAMPLE TABLE PORTLET-->
                         </div>
-         
+
                     </div>
 
                 </div>

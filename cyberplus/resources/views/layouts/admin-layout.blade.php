@@ -32,6 +32,8 @@
         <link href="{{asset('layout_assets/layouts/layout2/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('layout_assets/layouts/layout2/css/themes/blue.min.css')}}" rel="stylesheet" type="text/css" id="style_color" />
         <link href="{{asset('layout_assets/layouts/layout2/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+
+        <script src="https://kit.fontawesome.com/66031c452d.js" crossorigin="anonymous"></script>
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
@@ -466,6 +468,22 @@
                             <a href="{{ route('admin.get.add.user.page') }}" class="nav-link nav-toggle">
                                 <i class="icon-user"></i>
                                 <span class="title">Add owner</span>
+                                <span class="arrow"></span>
+                            </a>
+
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{ route('admin.get.owners') }}" class="nav-link nav-toggle">
+                                <i class="icon-user"></i>
+                                <span class="title">View owners</span>
+                                <span class="arrow"></span>
+                            </a>
+
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="#" class="nav-link nav-toggle">
+                   <i class="fas fa-thumbs-up fa-5x"></i>
+                                <span class="title">View shops</span>
                                 <span class="arrow"></span>
                             </a>
 
@@ -1157,6 +1175,7 @@
             <script src="{{asset('layout_assets/layouts/layout2/scripts/demo.min.js')}}" type="text/javascript"></script>
             <script src="{{asset('layout_assets/layouts/global/scripts/quick-sidebar.min.js')}}" type="text/javascript"></script>
             <script src="{{asset('layout_assets/layouts/global/scripts/quick-nav.min.js')}}" type="text/javascript"></script>
+
             <!-- END THEME LAYOUT SCRIPTS -->
     </body>
 

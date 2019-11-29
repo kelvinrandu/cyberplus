@@ -56,8 +56,6 @@ class AdminController extends Controller
         $email = $request->get('email');
         $role_id = 2 ;
 
-        $user = DB::table('users')->where('user_name', 'John')->first();
-
         DB::table('users')->insert([
             'user_name' => $user_name,
             'email' =>  $email ,
@@ -65,8 +63,8 @@ class AdminController extends Controller
             'role_id' =>  $role_id,
         ]);
        
-        //   return redirect()->back()->with('message','added store owner successfully');
-          return $user_name;
+          return redirect()->back()->with('message','added store owner successfully');
+        
     }
 
     /**
@@ -86,9 +84,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showOwners()
     {
-        //
+        // get all store owners
+        $user = DB::table('users')->where('role_id', '2');
+        return view('admin.view-all-owners');
     }
 
     /**
