@@ -128,7 +128,19 @@
                     <div class="row">
                         <div class="col-md-6 ">
                             <!-- BEGIN SAMPLE FORM PORTLET-->
-                            <div class="portlet light ">
+                            @if(Session::has('status'))
+                    <div class="alert alert-success"><em> {!! session('status') !!}</em></div>
+                @endif
+                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif                          
+                <div class="portlet light ">
                                 <div class="portlet-title">
                                     <div class="caption font-red-sunglo">
                                         <i class="icon-settings font-red-sunglo"></i>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -43,9 +44,19 @@ class AdminController extends Controller
      */
     public function createOwner(Request $request)
     {
+ 
+        //validate user input
+        $this->validate($request,[
+            'user_name' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+        
+        ]);
+
         $user_name = $request->get('user_name');
         $email = $request->get('email');
         $role_id = 2 ;
+
+        $user = DB::table('users')->where('user_name', 'John')->first();
 
         DB::table('users')->insert([
             'user_name' => $user_name,
