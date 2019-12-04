@@ -35,7 +35,7 @@ class HomeController extends Controller
         Session::put('user', $user); // add user object to session
    
         // check if user account is paid for
-        if (!isset($user->paid) || $user->paid == 0 )  {
+        if ($user->is_paid != 1)  {
             return 'not paid';
         }
 
@@ -53,13 +53,6 @@ class HomeController extends Controller
 
         }
 
-        // return view('home');
-        // return $user->role_id ;
-        
-
-        // Session::put('user', $user);
-        // session()->forget('user.password');
-        // dd(session()->get('user.password'));
    
     }
 }

@@ -168,7 +168,7 @@
                                                     <td> {{$owner->user_name}}</td>
                                                     <td> {{$owner->email}} </td>
 
-                                                    @if($owner->paid==1)
+                                                    @if($owner->is_paid==1)
                                                     <td> 
                                                         <span class="label label-sm label-success"> Paid </span> 
                                                     </td>

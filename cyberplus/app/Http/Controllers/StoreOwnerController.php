@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 
 class StoreOwnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    // check if user accessing this function is logged in
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        return view('home');
+        return view('store_owner.dashboard');
     }
 
     /**
