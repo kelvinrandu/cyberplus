@@ -3,6 +3,13 @@
 namespace Cyberplus\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use App\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Support\Facades\Validator;
 
 class StoreOwnerController extends Controller
 {
@@ -16,6 +23,7 @@ class StoreOwnerController extends Controller
     public function index()
     {
         return view('store_owner.dashboard');
+      
     }
 
     /**
