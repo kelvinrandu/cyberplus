@@ -45,9 +45,9 @@ class HomeController extends Controller
                 break;
 
             case 2:
-                // return redirect()->action('StoreOwnerController@index');
+                return redirect()->action('StoreOwnerController@index');
 //redirect()->action('StartChoosingController@showAll', ['userTableData' => $user_table_data]);
-                return 1;
+                
                 break;           
             default:
                 return redirect()->action('StoreAttendantController@index');
