@@ -31,11 +31,11 @@ class HomeController extends Controller
     {
  
         $user = Auth::user();       //get user object of the logged in user
-        Session::put('user', $user); // add user object to session
+        Session::put('user', $user); // add user object to session.....to be deleted
    
         // check if user account is paid for
-        if ($user->is_paid != 1)  {
-            return 'not paid';
+        if ($user->status != 1)  {
+            return 'not active';
         }
 
         // check the role of the signed in user and direct to their respective dashboard
@@ -46,7 +46,6 @@ class HomeController extends Controller
 
             case 2:
                 return redirect()->action('StoreOwnerController@index');
-//redirect()->action('StartChoosingController@showAll', ['userTableData' => $user_table_data]);
                 
                 break;           
             default:

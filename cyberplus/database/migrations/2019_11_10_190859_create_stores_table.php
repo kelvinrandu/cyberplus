@@ -16,9 +16,12 @@ class CreateStoresTable extends Migration
         Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('store_name');
+            $table->string('store_email');
             $table->string('store_phone_number');
+            $table->boolean('is_paid')->default(false); // if store has paid subscription or not
             $table->integer('type_id');
-            $table->integer('user_id');
+            $table->integer('owner_id');
+            $table->integer('attendant_id');
             $table->timestamps();
         });
     }
@@ -32,4 +35,5 @@ class CreateStoresTable extends Migration
     {
         Schema::dropIfExists('stores');
     }
+
 }

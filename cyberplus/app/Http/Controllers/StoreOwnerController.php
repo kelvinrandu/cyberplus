@@ -5,6 +5,7 @@ namespace Cyberplus\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\User;
+use App\Store;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
@@ -26,14 +27,57 @@ class StoreOwnerController extends Controller
       
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    // directs admin to add store owner page
+    public function getAddStorePage()
     {
-        //
+        return view('store_owner.add-store');
+
+    }
+
+    // function that creates store 
+    public function createStore(Request $request)
+    {
+ 
+        //validate user input
+        $this->validate($request,[
+            'store_name' => 'required|string|max:255|unique:stores',
+            'store_email' => 'required|string|email|max:255|unique:stores',
+        
+        ]);
+
+        $user_name = $request->get('store_name');
+        $email = $request->get('store_email');
+        $role_id = 3 ;        
+
+        // insert store attendant to users table
+        DB::table('users')->insert([
+            'user_name' => $user_name,
+            'email' =>  $email ,
+            'password' => bcrypt('password'),
+            'role_id' =>  $role_id,      
+           
+        ]);
+        
+        // // insert store to stores table
+        // DB::table('stores')->insert([
+        //     'store_name' => $user_name,
+        //     'store_email' =>  $email ,
+        //     'password' => bcrypt('password'),
+        //     'role_id' =>  $role_id,
+           
+        // ]);
+       
+          return redirect()->back()->with('message','added store  successfully');
+        
+    }
+
+
+    public function showStores()
+    {
+        // get all stores
+        $owners = DB::table('users')->where('role_id', '3')->get();
+        return view('store_owner.view-all-stores',array('owners' => $owners ));
+      
     }
 
     /**

@@ -1,7 +1,8 @@
-@extends('layouts.admin-layout')
+@extends('layouts.owner-layout')
 
 @section('content')
 
+                <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
                     <!-- BEGIN PAGE HEADER-->
                     <!-- BEGIN THEME PANEL -->
@@ -82,8 +83,8 @@
                         </div>
                     </div>
                     <!-- END THEME PANEL -->
-                    <h1 class="page-title"> View store owners
-                 
+                    <h1 class="page-title"> Add Store 
+                    
                     </h1>
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
@@ -93,7 +94,7 @@
                                 <i class="fa fa-angle-right"></i>
                             </li>
                             <li>
-                                <span>Store owners</span>
+                                <span>Add owner</span>
                             </li>
                         </ul>
                         <div class="page-toolbar">
@@ -124,87 +125,89 @@
                         </div>
                     </div>
                     <!-- END PAGE HEADER-->
-
                     <div class="row">
-                        <div class="col-md-8">
-                            <!-- BEGIN SAMPLE TABLE PORTLET-->
-                            <div class="portlet box green">
+                        <div class="col-md-6 ">
+                            <!-- BEGIN SAMPLE FORM PORTLET-->
+                            @if(Session::has('message'))
+                    <div class="alert alert-success"><em> {!! session('message') !!}</em></div>
+                @endif
+                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif                          
+                <div class="portlet light ">
                                 <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-comments"></i>Store owners</div>
-                                    <div class="tools">
-                                        <a href="javascript:;" class="collapse"> </a>
-                                        <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                        <a href="javascript:;" class="reload"> </a>
-                                        <a href="javascript:;" class="remove"> </a>
+                                    <div class="caption font-red-sunglo">
+                                        <i class="icon-settings font-red-sunglo"></i>
+                                        <span class="caption-subject font-dark sbold uppercase">Add Store</span>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm green dropdown-toggle" href="javascript:;" data-toggle="dropdown"> Actions
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-pencil"></i> Edit </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-trash-o"></i> Delete </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-ban"></i> Ban </a>
+                                                </li>
+                                                <li class="divider"> </li>
+                                                <li>
+                                                    <a href="javascript:;"> Make admin </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-   
+                                <div class="portlet-body form">
+                                <form  action="{{ route('owner.add.store') }}" method="post">
+                                {{ csrf_field() }}
+                                    
+                                        <div class="form-group">
+                                                <label for="exampleInputPassword1">Store Name</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user font-red"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" id="exampleInputPassword1" name="store_name" placeholder="Store Name">
+                                                </div>
+                                            </div>
+                                        <div class="form-body">
+                           
 
-                                <div class="portlet-body">
-                                    <div class="table-scrollable">
-                                        <table class="table table-striped table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th> #  </th>
-                                                    <th> User name </th>
-                                                    <th> email </th>
-                                                    <th> Status </th>
-                                                    <th> View shops </th>
-                                                    <th> action </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if(count($owners)==0)
-                                            <tr>
-                                            <td><div class="note note-success"><h4>No store owners</h4>  </div></td>
-                              
-                              </tr>
-                                 @else
-                                            @foreach ($owners as $owner)                                                       
-                                                <tr>
-                                                    <td>{{$owner->id}}</td>
-                                                    <td> {{$owner->user_name}}</td>
-                                                    <td> {{$owner->email}} </td>
+                                                <label>Email Address</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" name="store_email" placeholder="Email Address"> </div>
+                                            </div>
 
-                                                    @if($owner->status==1)
-                                                    <td> 
-                                                        <span class="label label-sm label-success"> Active </span> 
-                                                    </td>
-                                                    @else
-                                                    <td> 
-                                                        <span class="label label-sm label-success"> Not Active </span> 
-                                                    </td>
-                                                    @endif
-                                                    <td>
-                                                    <a href="javascript:;" class="btn dark btn-sm btn-outline sbold uppercase">
-                                                             View </a>
-                                                    </td>
-                                                    @if($owner->status==1)
-                                                    <td> 
-                                                    <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
-                                                            deactivate </a>
-                                                    </td>
-                                                    @else
-                                                    <td> 
-                                                    <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
-                                                            activate </a>
-                                                    </td>
-                                                    </td>
-                                                    @endif
-                                                    
-                                                </tr>
-                                                @endforeach
-                                                @endif
-
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn blue">Submit</button>
+                                            <button type="button" class="btn default">Cancel</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <!-- END SAMPLE TABLE PORTLET-->
-                        </div>
 
+                            <!-- END SAMPLE FORM PORTLET-->
+                        </div>
+         
                     </div>
 
                 </div>

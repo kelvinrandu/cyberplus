@@ -1,4 +1,4 @@
-@extends('layouts.admin-layout')
+@extends('layouts.owner-layout')
 
 @section('content')
 
@@ -180,18 +180,13 @@
                                                     <a href="javascript:;" class="btn dark btn-sm btn-outline sbold uppercase">
                                                              View </a>
                                                     </td>
-                                                    @if($owner->status==1)
+                             
                                                     <td> 
                                                     <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
-                                                            deactivate </a>
-                                                    </td>
-                                                    @else
-                                                    <td> 
-                                                    <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
-                                                            activate </a>
+                                                            delete</a>
                                                     </td>
                                                     </td>
-                                                    @endif
+                                                 
                                                     
                                                 </tr>
                                                 @endforeach

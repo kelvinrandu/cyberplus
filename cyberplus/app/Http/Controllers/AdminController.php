@@ -32,7 +32,6 @@ class AdminController extends Controller
         return view('admin.add-owner');
     }
 
-
     // function that creates store owner
     public function createOwner(Request $request)
     {
@@ -47,12 +46,14 @@ class AdminController extends Controller
         $user_name = $request->get('user_name');
         $email = $request->get('email');
         $role_id = 2 ;
+      
 
         DB::table('users')->insert([
             'user_name' => $user_name,
             'email' =>  $email ,
             'password' => bcrypt('password'),
             'role_id' =>  $role_id,
+           
            
         ]);
        

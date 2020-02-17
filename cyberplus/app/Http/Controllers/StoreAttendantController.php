@@ -13,7 +13,7 @@ class StoreAttendantController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('store_attendant.dashboard');
     }
 
     /**
