@@ -49,25 +49,25 @@ class StoreOwnerController extends Controller
         $email = $request->get('store_email');
         $role_id = 3 ;        
 
-        // insert store attendant to users table
-        DB::table('users')->insert([
+        // insert storeattendant to user table
+        $user_id = DB::table('users')->insertGetId([
             'user_name' => $user_name,
             'email' =>  $email ,
             'password' => bcrypt('password'),
             'role_id' =>  $role_id,      
            
-        ]);
-        
-        // // insert store to stores table
-        // DB::table('stores')->insert([
-        //     'store_name' => $user_name,
-        //     'store_email' =>  $email ,
-        //     'password' => bcrypt('password'),
-        //     'role_id' =>  $role_id,
+        ]);      
+        // insert store to stores table
+        DB::table('stores')->insert([
+            'store_name' => $user_name,
+            'store_email' =>  $email ,
+            'password' => bcrypt('password'),
+            'role_id' =>  $role_id,
            
-        // ]);
+        ]);
        
-          return redirect()->back()->with('message','added store  successfully');
+        //   return redirect()->back()->with('message','added store  successfully');
+          return $user_id;
         
     }
 
