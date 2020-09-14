@@ -17,7 +17,7 @@ class CreateStoresTable extends Migration
             $table->bigIncrements('id');
             $table->string('store_name');
             $table->string('store_email');
-            $table->string('store_phone_number');
+            $table->string('store_phone_number')->default(null);;
             $table->boolean('is_paid')->default(false); // if store has paid subscription or not
             $table->integer('type_id');
             $table->integer('owner_id');

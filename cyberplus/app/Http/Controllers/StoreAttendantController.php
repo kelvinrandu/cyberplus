@@ -14,6 +14,8 @@ class StoreAttendantController extends Controller
     public function index()
     {
         return view('store_attendant.dashboard');
+    
+
     }
 
     /**

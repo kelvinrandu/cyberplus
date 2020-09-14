@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\User;
 use App\Store;
+use  Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
@@ -44,13 +45,15 @@ class StoreOwnerController extends Controller
             'store_email' => 'required|string|email|max:255|unique:stores',
         
         ]);
-
+        $user = Auth::user();
+        $owner_id = $user->id;
         $user_name = $request->get('store_name');
         $email = $request->get('store_email');
-        $role_id = 3 ;        
+        $role_id = 3; 
+                 
 
         // insert storeattendant to user table
-        $user_id = DB::table('users')->insertGetId([
+        $attendant_id = DB::table('users')->insertGetId([
             'user_name' => $user_name,
             'email' =>  $email ,
             'password' => bcrypt('password'),
@@ -61,13 +64,15 @@ class StoreOwnerController extends Controller
         DB::table('stores')->insert([
             'store_name' => $user_name,
             'store_email' =>  $email ,
-            'password' => bcrypt('password'),
-            'role_id' =>  $role_id,
-           
+            'store_phone_number' =>  070000000,
+            'type_id' =>  1,
+            'owner_id' =>  $owner_id,
+            'attendant_id' =>  $attendant_id,
+                    
         ]);
-       
-        //   return redirect()->back()->with('message','added store  successfully');
-          return $user_id;
+     
+          return redirect()->back()->with('message','added store  successfully');
+
         
     }
 
