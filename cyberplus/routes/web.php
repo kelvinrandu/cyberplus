@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/php', function() {
+    return response()->json([
+     'stuff' => phpinfo()
+    ]);
+ });
 
 Route::get('/', function () {
     return view('welcome');
