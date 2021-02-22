@@ -3,6 +3,7 @@
 namespace Cyberplus\Providers;
 
 use Illuminate\Support\Facades\Gate;
+use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'Cyberplus\Model' => 'Cyberplus\Policies\ModelPolicy',
+        'Cyberplus\Model' => 'Cyberplus\Policies\ModelPolicy',
     ];
 
     /**
