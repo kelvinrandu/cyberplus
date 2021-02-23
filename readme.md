@@ -47,3 +47,9 @@ The store  has the priviledge to do the following:
 
 ## LINK TO LIVE SITE
 https://cyberplus-backend.herokuapp.com/
+
+## API ROUTES
+
+| Methods        | Url          | Description |
+| ------------- |:-------------:| -----:|
+| POST   | https://cyberplus-backend.herokuapp.com/api/login/      |  login user      | 
