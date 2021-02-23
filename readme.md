@@ -52,4 +52,4 @@ https://cyberplus-backend.herokuapp.com/
 
 | Methods        | Url          | Description |
 | ------------- |:-------------:| -----:|
-| POST   | https://cyberplus-backend.herokuapp.com/api/login/      |  login user      | 
+| POST   | https://cyberplus-backend.herokuapp.com/api/login     |  login user      | 
