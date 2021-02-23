@@ -38,7 +38,7 @@ The store  has the priviledge to do the following:
 
 
 ## DOCUMENTATION
-- https://web.postman.co/collections/4885531-a24495a3-293b-5af4-5d5c-ac7f3b54d452?workspace=1882cfc5-96cd-4730-87d7-23c8116a106f#1b586779-9cb2-a2cd-09d7-4581b19782cb
+https://documenter.getpostman.com/view/4885531/TWDZGvMW
 
 ## LINK TO TRELLO TRACKER STORIES
 - https://trello.com/b/82LEEmaO/cyberplus-backend
